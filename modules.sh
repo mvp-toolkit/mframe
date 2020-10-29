@@ -867,6 +867,6 @@ RUN() {
 }
 
 say() {
-  [ "$CLI_DEBUG" == "true" ] && echo '>>>' "$@"
+  [ "$DEBUG" == "true" ] && echo '>>>' "$@"
   return 0
 }
