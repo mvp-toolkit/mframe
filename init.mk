@@ -26,7 +26,7 @@ MF_HELP_TARGETS = $(filter-out mframe-help module-help,$(filter %-help,$(call mf
 
 mframe-help:
 	@$(if $(inc),true,echo "Usage: make <target>" && echo)
-	@$(MAKE) module-help
+	@$(MAKE) module-help inc=1
 	@for t in $(MF_HELP_TARGETS); do $(MAKE) $$t inc=1; done
 
 mframe-info:
