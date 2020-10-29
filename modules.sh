@@ -124,7 +124,7 @@ mframe_modules_clone() {
   fi
 
   RUN git subrepo clone $mod_repo -b v$v $([ -d "$mod_dir" ] && echo "-f") $mod_dir -q
-  RUN make _module-cloned _module-cfgadd repo=$mod_repo name=$mod_name
+  RUN make _module-hook-cloned _module-cfgadd repo=$mod_repo name=$mod_name
 
   if ! git diff --quiet; then
     RUN git add .
@@ -260,7 +260,7 @@ mframe_modules_remove() {
   # in case of any errors remove temp branch and restore initial state:
   trap 'mframe_utils_git_remove_temp_branch' ERR INT
 
-  RUN make _module-remove repo=$mod_repo name=$mod_name
+  RUN make _module-hook-remove repo=$mod_repo name=$mod_name
 
   if [ -f "$mod_dir/.gitrepo" ]; then
     RUN git subrepo clean $mod_dir -q

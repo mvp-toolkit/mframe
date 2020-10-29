@@ -66,7 +66,7 @@ module-clone:
 	@$(call MODULES_RUN) clone
 
 # run the module's cloned hook:
-_module-cloned:
+_module-hook-cloned:
 	@$(if $(call mf_is_target,_$(name)-cloned),$(MAKE) _$(name)-cloned,true)
 
 # update a module:
@@ -90,7 +90,7 @@ module-remove:
 	@$(call MODULES_RUN) remove
 
 # run the module's remove hook:
-_module-remove:
+_module-hook-remove:
 	@$(if $(call mf_is_target,_$(name)-remove),$(MAKE) _$(name)-remove,true)
 
 # run module-cfgadd, if defined:
