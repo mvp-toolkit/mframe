@@ -15,6 +15,7 @@ _${NAME}-remove:
 
 # remove the leading _ to unhide this target:
 _${NAME}-help:
+	@$(if $(inc),true,echo "Usage: make <target>" && echo)
 	@echo "Targets provided by the \"${NAME}\" module:"
 	@echo ""
 	@echo "  ${NAME}-help       this help"

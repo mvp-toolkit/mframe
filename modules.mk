@@ -37,11 +37,12 @@ MODULE_PARAMS = repo=$(repo) name=$(name)
 	module-info module-gitrepo-reset
 
 module-help:
+	@$(if $(inc),true,echo "Usage: make <target>" && echo)
 	@echo "Module management targets:"
-	@echo ""
+	@echo
 	@echo "  The \"id\" parameter below can be a repository URL, a module name or a"
 	@echo "  local directory (for a cloned module)."
-	@echo ""
+	@echo
 	@echo "  module id=...                        create a new module"
 	@echo "  module-clone id=... [v=latest]       clone an existing module"
 	@echo "  module-pull id=...                   pull a module's upstream changes"
@@ -54,7 +55,7 @@ module-help:
 	@echo "  module-status [id=...]               show brief status info"
 	@echo "  module-info [id=...]                 show detailed info"
 	@echo "  module-gitrepo-reset [id=...]        reset .gitrepo files"
-	@echo ""
+	@echo
 
 # create a new module:
 module:

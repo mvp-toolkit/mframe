@@ -25,9 +25,9 @@ MF_HELP_TARGETS = $(filter-out mframe-help module-help,$(filter %-help,$(call mf
 .PHONY: mframe-help mframe-info
 
 mframe-help:
-	@$(if $(inc),true,echo "Usage: make [target]" && echo)
+	@$(if $(inc),true,echo "Usage: make <target>" && echo)
 	@$(MAKE) module-help
-	@for t in $(MF_HELP_TARGETS); do $(MAKE) $$t; done
+	@for t in $(MF_HELP_TARGETS); do $(MAKE) $$t inc=1; done
 
 mframe-info:
 	@echo
