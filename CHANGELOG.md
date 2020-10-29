@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/mvp-toolkit/mframe/compare/v1.0.2...v1.0.3) (2020-10-29)
+
+
+### Bug Fixes
+
+* Fixed bug when calling the "cloned" hooks ([23d9d5e](https://github.com/mvp-toolkit/mframe/commit/23d9d5ebf011c1a27a55fd036498e3c4d7ba55b5))
+
 ### [1.0.2](https://github.com/mvp-toolkit/mframe/compare/v1.0.1...v1.0.2) (2020-10-29)
 
 
