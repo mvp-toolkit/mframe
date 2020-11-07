@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/mvp-toolkit/mframe/compare/v1.0.3...v1.0.4) (2020-11-07)
+
+
+### Features
+
+* Added support for disabling hooks by defining HOOKS=false ([ede3f04](https://github.com/mvp-toolkit/mframe/commit/ede3f045fd11a7ba79abc7c6fdd4396dfbe6e89c))
+
 ### [1.0.3](https://github.com/mvp-toolkit/mframe/compare/v1.0.2...v1.0.3) (2020-10-29)
 
 
