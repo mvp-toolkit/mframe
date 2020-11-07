@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/mvp-toolkit/mframe/compare/v1.0.4...v1.0.5) (2020-11-07)
+
+
+### Bug Fixes
+
+* Fixed help for module-cfgadd and module-cfgrem targets ([c2fed99](https://github.com/mvp-toolkit/mframe/commit/c2fed992aa53c9a436a5775b4524410e024a63a5))
+
 ### [1.0.4](https://github.com/mvp-toolkit/mframe/compare/v1.0.3...v1.0.4) (2020-11-07)
 
 
