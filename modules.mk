@@ -5,12 +5,12 @@ MODULES_TMP = $(ROOT_DIR)/.git/tmp/mframe
 
 # show module-cfgadd target only if it's defined by the app makefile:
 define MODULES_CFGADD_HELP
-$(if $(call mf_is_target,module-cfgadd),echo "  module-cfgadd id=...                 merge module configs",true)
+$(if $(call mf_is_target,module-cfgadd),echo "  module-cfgadd name=...               merge module configs",true)
 endef
 
 # show module-cfgrem target only if it's defined by the app makefile:
 define MODULES_CFGREM_HELP
-$(if $(call mf_is_target,module-cfgrem),echo "  module-cfgrem id=...                 remove module configs",true)
+$(if $(call mf_is_target,module-cfgrem),echo "  module-cfgrem name=...               remove module configs",true)
 endef
 
 # run a bash function, defined in 'modules.sh':
@@ -40,8 +40,7 @@ module-help:
 	@$(if $(inc),true,echo "Usage: make <target>" && echo)
 	@echo "Module management targets:"
 	@echo
-	@echo "  The \"id\" parameter below can be a repository URL, a module name or a"
-	@echo "  local directory (for a cloned module)."
+	@echo "  The \"id\" parameter below can be a repository URL or a module name."
 	@echo
 	@echo "  module id=...                        create a new module"
 	@echo "  module-clone id=... [v=latest]       clone an existing module"
