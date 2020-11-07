@@ -104,7 +104,9 @@ mframe_modules_create() {
 
   echo "Module \"$mod_name\" created in \"$mod_dir\"."
 
-  RUN make _module-created-hook repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-created-hook repo=$mod_repo name=$mod_name
+  fi
 }
 
 # `make module-clone id=... [v=latest]` command:
@@ -124,7 +126,10 @@ mframe_modules_clone() {
   fi
 
   RUN git subrepo clone $mod_repo -b v$v $([ -d "$mod_dir" ] && echo "-f") $mod_dir -q
-  RUN make _module-hook-cloned _module-cfgadd repo=$mod_repo name=$mod_name
+
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-hook-cloned _module-cfgadd repo=$mod_repo name=$mod_name
+  fi
 
   if ! git diff --quiet; then
     RUN git add .
@@ -136,7 +141,9 @@ mframe_modules_clone() {
 
   echo "Module \"$mod_name\" (v$v) cloned in \"$mod_dir\"."
 
-  RUN make _module-cloned-hook repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-cloned-hook repo=$mod_repo name=$mod_name
+  fi
 }
 
 # `make module-pull id=...` command:
@@ -166,7 +173,9 @@ mframe_modules_pull() {
 
   echo "Module \"$mod_name\" updated."
 
-  RUN make _module-pulled-hook repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-pulled-hook repo=$mod_repo name=$mod_name
+  fi
 }
 
 # `make module-pull-all` command:
@@ -175,7 +184,9 @@ mframe_modules_pull_all() {
     MODULE_ID=$(basename $subrepo) mframe_modules_pull
   done
 
-  RUN make _module-pulled-all-hook
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-pulled-all-hook
+  fi
 }
 
 # `make module-push id=...` command:
@@ -229,7 +240,9 @@ mframe_modules_push() {
   if $publish_success; then
     echo "Module \"$mod_name\" ($publish_branch) published."
 
-    RUN make _module-pushed-hook repo=$mod_repo name=$mod_name
+    if [ "$HOOKS" != "false" ]; then
+      RUN make _module-pushed-hook repo=$mod_repo name=$mod_name
+    fi
   fi
 }
 
@@ -239,7 +252,9 @@ mframe_modules_push_all() {
     MODULE_ID=$(basename $subrepo) mframe_modules_push
   done
 
-  RUN make _module-pushed-all-hook
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-pushed-all-hook
+  fi
 }
 
 # `make module-remove id=...` command:
@@ -260,7 +275,9 @@ mframe_modules_remove() {
   # in case of any errors remove temp branch and restore initial state:
   trap 'mframe_utils_git_remove_temp_branch' ERR INT
 
-  RUN make _module-hook-remove repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-hook-remove repo=$mod_repo name=$mod_name
+  fi
 
   if [ -f "$mod_dir/.gitrepo" ]; then
     RUN git subrepo clean $mod_dir -q
@@ -270,7 +287,9 @@ mframe_modules_remove() {
   RUN git add $mod_dir
   RUN git commit -q -m "chore(mframe): removed module \"$mod_name\"" $mod_dir/*
 
-  RUN make _module-cfgrem repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-cfgrem repo=$mod_repo name=$mod_name
+  fi
 
   if ! git diff --quiet; then
     RUN git add .
@@ -282,7 +301,9 @@ mframe_modules_remove() {
 
   echo "Module \"$mod_name\" removed."
 
-  RUN make _module-removed-hook repo=$mod_repo name=$mod_name
+  if [ "$HOOKS" != "false" ]; then
+    RUN make _module-removed-hook repo=$mod_repo name=$mod_name
+  fi
 }
 
 # `make module-status [id=...]` command:
