@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/mvp-toolkit/mframe/compare/v1.0.5...v1.0.6) (2020-11-10)
+
+
+### Bug Fixes
+
+* Prevent creation of package-lock.json ([932456d](https://github.com/mvp-toolkit/mframe/commit/932456df20ea48e078ee62ae7e20c5df065c998c))
+
 ### [1.0.5](https://github.com/mvp-toolkit/mframe/compare/v1.0.4...v1.0.5) (2020-11-07)
 
 
