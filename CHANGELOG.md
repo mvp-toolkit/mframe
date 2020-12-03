@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/mvp-toolkit/mframe/compare/v1.0.6...v1.0.7) (2020-12-03)
+
+
+### Features
+
+* Added support for required flag on mf_utils_sh_input ([573889d](https://github.com/mvp-toolkit/mframe/commit/573889db956482999e523c40c41e705ddd1eb339))
+
 ### [1.0.6](https://github.com/mvp-toolkit/mframe/compare/v1.0.5...v1.0.6) (2020-11-10)
 
 
