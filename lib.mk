@@ -40,8 +40,9 @@ endef
 # get user input:
 # $1 - prompt message
 # $2 - default value
+# $3 - required flag (true/false, default false)
 define mf_utils_sh_input
-read -p "$1 [$2] " res && if [ ! -z "$$res" ]; then echo $$res; else echo $2; fi
+while read -p "$1$$(if [ ! -z "$2" ]; then echo " [$2]"; fi) " res; if [ ! -z "$$res" ]; then res="$${res#"$${res%%[![:space:]]*}"}"; res="$${res%"$${res##*[![:space:]]}"}"; else if [ ! -z "$2" ]; then res="$2"; fi; fi; [ -z "$$res" -a "$3" = "true" ]; do continue; done; echo $$res
 endef
 
 # require we are in a GIT working directory:
