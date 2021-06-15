@@ -277,6 +277,7 @@ mframe_modules_remove() {
 
   if [ "$HOOKS" != "false" ]; then
     RUN make _module-hook-remove repo=$mod_repo name=$mod_name
+    RUN make _module-cfgrem repo=$mod_repo name=$mod_name
   fi
 
   if [ -f "$mod_dir/.gitrepo" ]; then
@@ -286,10 +287,6 @@ mframe_modules_remove() {
   RUN rm -rf $mod_dir
   RUN git add $mod_dir
   RUN git commit -q -m "chore(mframe): removed module \"$mod_name\"" $mod_dir/*
-
-  if [ "$HOOKS" != "false" ]; then
-    RUN make _module-cfgrem repo=$mod_repo name=$mod_name
-  fi
 
   if ! git diff --quiet; then
     RUN git add .
