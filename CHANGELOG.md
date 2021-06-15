@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/mvp-toolkit/mframe/compare/v1.0.8...v1.0.9) (2021-06-15)
+
+
+### Bug Fixes
+
+* Call module-cfgrem before deleting the module ([2d95c70](https://github.com/mvp-toolkit/mframe/commit/2d95c70d53d76ee1cf3f77cef436aa03fb97f798))
+
 ### [1.0.8](https://github.com/mvp-toolkit/mframe/compare/v1.0.7...v1.0.8) (2021-04-06)
 
 
