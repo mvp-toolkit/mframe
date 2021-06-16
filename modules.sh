@@ -404,12 +404,12 @@ mframe_modules_info() {
 
     if [ $mod_ahead -gt 0 ]; then
       echo; echo "  Commits ahead:"
-      git log --pretty=format:%s FETCH_HEAD..$mod_local_commit | awk '{print "    "$0}'
+      git log --pretty='format:[%h] %s' FETCH_HEAD..$mod_local_commit | awk '{print "    "$0}'
     fi
 
     if [ $mod_behind -gt 0 ]; then
       echo; echo "  Commits behind:"
-      git log --pretty=format:%s $mod_local_commit..FETCH_HEAD | awk '{print "    "$0}'
+      git log --pretty='format:[%h] %s' $mod_local_commit..FETCH_HEAD | awk '{print "    "$0}'
     fi
 
     echo; echo
