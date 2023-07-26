@@ -1,0 +1,10 @@
+name: Release
+on:
+  push:
+    branches:
+      - '[0-9]+.x'
+      - main
+jobs:
+  call-subrepo-release:
+    uses: mvp-toolkit/mframe/.github/workflows/subrepo-release.yml@main
+    secrets: inherit

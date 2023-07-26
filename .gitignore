@@ -1,0 +1,5 @@
+Makefile
+
+# temporary or otherwise not needed files:
+.DS_Store
+.*.swp

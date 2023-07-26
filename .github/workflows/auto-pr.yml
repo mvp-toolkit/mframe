@@ -1,0 +1,10 @@
+name: Auto Pull Request
+on:
+  push:
+    branches:
+      - updates/v[0-9]+/*
+      - updates/main/*
+jobs:
+  call-subrepo-auto-pr:
+    uses: mvp-toolkit/mframe/.github/workflows/subrepo-auto-pr.yml@main
+    secrets: inherit

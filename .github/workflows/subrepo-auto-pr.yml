@@ -1,0 +1,35 @@
+name: Package Auto Pull Request
+on: workflow_call
+jobs:
+  auto-pull-request:
+    name: Auto Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Determine target branch
+        run: |
+          ver=$(echo $GITHUB_REF_NAME | cut -d '/' -f2)
+          app=$(echo $GITHUB_REF_NAME | cut -d '/' -f3 | cut -d '#' -f1)
+          v=$(echo $ver | sed -e 's/^v//')
+          if [ "$v" == "main" ]; then
+            b="main";
+          else
+            b=$(git ls-remote --exit-code --tags origin refs/tags/v$((v+1)) &> /dev/null && echo $v.x || echo main);
+          fi
+          if [ "$b" != "main" ]; then
+            git ls-remote --exit-code --heads origin refs/heads/$v.x || git push origin refs/tags/v$v:refs/heads/$v.x;
+          fi
+          echo "TARGET_BRANCH=$b" >> $GITHUB_ENV
+          echo "PKG_VERSION=$ver" >> $GITHUB_ENV
+          echo "APP_NAME=$app" >> $GITHUB_ENV
+      - name: Open PR
+        uses: repo-sync/pull-request@v2
+        id: pr
+        with:
+          pr_title: Updates to ${{ env.PKG_VERSION }} from ${{ env.APP_NAME }}
+          pr_label: auto-pr,${{ env.APP_NAME }},${{ env.PKG_VERSION }}
+          destination_branch: ${{ env.TARGET_BRANCH }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
